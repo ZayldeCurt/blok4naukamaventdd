@@ -17,7 +17,25 @@ public class WriterService {
     }
 
     private String content(String name) {
-        return StringUtils.isBlank(name) ? "my friend":name;
+        String[] names;
+        if(StringUtils.isBlank(name)){
+            return "my friend";
+        }
+        else{
+            names = StringUtils.split(StringUtils.remove(name," "),",");
+            StringBuilder tmp=new StringBuilder();
+            tmp.append(names[0]);
+            if(names.length>1){
+                for (int i = 1; i < names.length-1; i++) {
+                    tmp.append(", ");
+                    tmp.append(names[i]);
+                }
+                tmp.append(" and ");
+                tmp.append(names[names.length-1]);
+
+            }
+            return tmp.toString();
+        }
     }
 
     private String suffix(String name) {

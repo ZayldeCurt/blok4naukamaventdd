@@ -73,4 +73,17 @@ public class WriterServiceTest {
         Assert.assertEquals("Hello, my friend.",result);
     }
 
+    @Test
+    public void testMultiName(){
+        //given
+        String name = "Michał, Janek, Mateusz";
+
+        //when
+        String result = writerService.write(name);
+
+        //then
+        Assert.assertEquals("Hello, Michał, Janek and Mateusz.",result);
+
+    }
+
 }
