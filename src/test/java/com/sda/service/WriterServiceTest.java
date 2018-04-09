@@ -22,7 +22,7 @@ public class WriterServiceTest {
         String result  =writerService.write(name);
 
         //then
-        Assert.assertEquals("Hello, Michał!",result);
+        Assert.assertEquals("Hello, Michał.",result);
     }
 
     @Test
@@ -34,7 +34,19 @@ public class WriterServiceTest {
         String result = writerService.write(name);
 
         //then
-        Assert.assertEquals("Hello, my friend!",result);
+        Assert.assertEquals("Hello, my friend.",result);
+    }
+
+    @Test
+    public void testCapitalizedName(){
+        //given
+        String name = "MICHAŁ";
+
+        //when
+        String result  =writerService.write(name);
+
+        //then
+        Assert.assertEquals("HELLO, MICHAŁ!",result);
     }
 
 }
