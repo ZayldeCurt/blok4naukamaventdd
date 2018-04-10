@@ -15,13 +15,74 @@ public class StringCalculatorTest {
     }
     @Test
     public void testCalc(){
+
+        Assert.assertEquals(5,stringCalculator.calc( "2:3"));
+        Assert.assertEquals(11,stringCalculator.calc( "5:6"));
+        Assert.assertEquals(5,stringCalculator.calc( "2;3"));
+        Assert.assertEquals(5,stringCalculator.calc( "2,3"));
+    }
+
+    @Test
+    public void testNullNumber(){
         //given
-        String numbers = "2 : 3";
+        String number = null;
 
         //when
-        int result = stringCalculator.calc(numbers);
+        int result = stringCalculator.calc(number);
 
         //then
-        Assert.assertEquals(5,result);
+        Assert.assertEquals(0,result);
     }
+
+    @Test
+    public void testBlankNumber(){
+        //given
+        String number = "";
+
+        //when
+        int result = stringCalculator.calc(number);
+
+        //then
+        Assert.assertEquals(0,result);
+    }
+
+    @Test
+    public void testMultiNumber(){
+        //given
+        String number = "2:3:4";
+
+        //when
+        int result = stringCalculator.calc(number);
+
+        //then
+        Assert.assertEquals(9,result);
+    }
+
+    @Test
+    public void testSpaceNumber(){
+        //given
+        String number = "2 : 3 : 4";
+
+        //when
+        int result = stringCalculator.calc(number);
+
+        //then
+        Assert.assertEquals(9,result);
+    }
+
+    @Test
+    public void testOneNumber(){
+        //given
+        String number = "2";
+
+        //when
+        int result = stringCalculator.calc(number);
+
+        //then
+        Assert.assertEquals(2,result);
+    }
+
+
+
+
 }

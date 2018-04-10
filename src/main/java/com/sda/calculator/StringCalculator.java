@@ -1,13 +1,21 @@
 package com.sda.calculator;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.stream.IntStream;
+
 public class StringCalculator {
     public int calc(String numbers){
-        String[] tabN = numbers.split(" : ");
+        if(StringUtils.isBlank(numbers)){
+            return 0;
+        }
+        int result=0;
+        String[] tabN = numbers.split("\\p{Punct}");
+        for(String element:tabN){
+            result+=Integer.valueOf(StringUtils.deleteWhitespace(element));
+        }
 
-        int a = Integer.valueOf(tabN[0]);
-        int b = Integer.valueOf(tabN[1]);
 
-
-        return a+b;
+        return result;
     }
 }
