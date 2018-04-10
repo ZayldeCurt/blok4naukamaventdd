@@ -83,7 +83,18 @@ public class WriterServiceTest {
 
         //then
         Assert.assertEquals("Hello, Michał, Janek and Mateusz.",result);
-
     }
+    @Test
+    public void testMultiCapitalizedName(){
+        //given
+        String name = "MICHAŁ, JANEK, MATEUSZ";
+
+        //when
+        String result = writerService.write(name);
+
+        //then
+        Assert.assertEquals("HELLO, MICHAŁ, JANEK AND MATEUSZ!",result);
+    }
+
 
 }

@@ -2,6 +2,13 @@ package com.sda.service;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class WriterService {
     public String write(String name){
 
@@ -23,18 +30,16 @@ public class WriterService {
         }
         else{
             names = StringUtils.split(StringUtils.remove(name," "),",");
-            StringBuilder tmp=new StringBuilder();
-            tmp.append(names[0]);
+            StringBuilder builder=new StringBuilder();
+            builder.append(names[0]);
             if(names.length>1){
-                for (int i = 1; i < names.length-1; i++) {
-                    tmp.append(", ");
-                    tmp.append(names[i]);
-                }
-                tmp.append(" and ");
-                tmp.append(names[names.length-1]);
-
+                IntStream.range(1, names.length)
+                        .forEach(i -> {
+                            builder.append(i==names.length-1 ? (!isCapitalizedName(name) ? " and " : " AND ") : ", ")
+                                   .append(names[i]);//.toString();
+                        });
             }
-            return tmp.toString();
+            return builder.toString();
         }
     }
 
