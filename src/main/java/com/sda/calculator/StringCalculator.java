@@ -2,6 +2,7 @@ package com.sda.calculator;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class StringCalculator {
@@ -10,12 +11,8 @@ public class StringCalculator {
             return 0;
         }
         int result=0;
-        String[] tabN = numbers.split("\\p{Punct}");
-        for(String element:tabN){
-            result+=Integer.valueOf(StringUtils.deleteWhitespace(element));
-        }
+        String[] tabN = StringUtils.deleteWhitespace(numbers).split("\\p{Punct}+");
 
-
-        return result;
+        return Arrays.stream(tabN).mapToInt(e->Integer.valueOf(e)).sum();
     }
 }

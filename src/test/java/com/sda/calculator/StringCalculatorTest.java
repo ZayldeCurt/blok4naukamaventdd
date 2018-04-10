@@ -61,7 +61,7 @@ public class StringCalculatorTest {
     @Test
     public void testSpaceNumber(){
         //given
-        String number = "2 : 3 : 4";
+        String number = "2 :: 3 : 4";
 
         //when
         int result = stringCalculator.calc(number);
