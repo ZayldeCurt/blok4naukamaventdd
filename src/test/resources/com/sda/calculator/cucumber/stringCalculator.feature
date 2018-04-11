@@ -31,6 +31,6 @@ Feature:
 
   Scenario: I can calculate multiple number with whitespaces
     Given I initialize stringCalculator
-    And I pass multiple 2,  5,6,,8 value
+    And I pass multiple 2 ; 5,6,,8 value
     When I trigger calculate function
     Then I get 21 as a result
